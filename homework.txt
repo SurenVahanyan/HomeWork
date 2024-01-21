@@ -1,0 +1,79 @@
+
+
+using System.Transactions;
+
+namespace ConsoleApp14
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var BankAccount1 = new BankAccaunt("Account 1", 0, new List<string>());
+            var BankAccount2 = new BankAccaunt("Account 2", 2000, new List<string>());
+            BankAccount1.deposit(1500);
+            BankAccount1.withdraw(700);
+            BankAccount1.transfer("Account2", 300);
+            BankAccount1.generate_statement();
+            foreach (var x in BankAccount1.transactions)
+            {
+                Console.WriteLine(x);
+            }
+            BankAccount1.Clear_transactions();
+            foreach (var x in BankAccount1.transactions)
+            {
+                Console.WriteLine(x);
+            }
+
+        }
+
+        public class BankAccaunt
+        {
+            public string account_number;
+            public int balance;
+            public List<string> transactions;
+            public BankAccaunt(string account_number, int balance, List<string> transactions)
+            {
+                this.account_number = account_number;
+                this.balance = balance;
+                this.transactions = transactions;
+            }
+            public int deposit(int amount)
+            {
+                transactions.Add($"Deposit: + {amount}");
+                return balance = balance + amount;
+
+            }
+            public int withdraw(int amount)
+            {
+                transactions.Add($"withdraw: - {amount}");
+                if (balance > amount)
+                {
+                    return balance = balance - amount;
+                }
+                else
+                    return -1;
+            }
+            public int transfer(string other_account, int amount)
+            {
+                transactions.Add($"Transfer to {other_account} {amount}$");
+                return balance = balance - amount;
+
+            }
+            public List<string> generate_statement()
+            {
+                transactions.Add($"balance: {balance}");
+                return transactions;
+
+            }
+            public int get_balance()
+            {
+                return balance;
+            }
+            public List<string> Clear_transactions()
+            {
+                transactions.Clear();
+                return transactions;
+            }
+        }
+    }
+}
