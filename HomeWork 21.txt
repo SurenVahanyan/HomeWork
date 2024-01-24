@@ -1,0 +1,42 @@
+
+
+using System.Transactions;
+
+namespace ConsoleApp14
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Point point_1 = new Point(30, 10);
+            Point point_2 = new Point(20, -10);
+            point_1.DistanceTo(point_2);
+
+        }
+    }
+
+    // 1. ** Класс "Точка" (Point)**
+    //- Создайте класс `Point` с двумя полями `X` и `Y`, которые представляют координаты точки на двумерной плоскости.
+    //- Добавьте конструктор, который принимает два аргумента для инициализации `X` и `Y`.
+    //- Создайте метод `DistanceTo`, который принимает другой объект `Point` и вычисляет расстояние между двумя точками.
+
+    public class Point
+    {
+        public int x;
+        public int y;
+        public Point(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+
+        }
+        public void DistanceTo(Point point)
+        {
+            Console.WriteLine(x - point.x);
+            Console.WriteLine(y - point.y);
+        }
+    }
+}
+
+s
